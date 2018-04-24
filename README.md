@@ -5,10 +5,10 @@ This module edits a file in system/etc called mkshrc which works similar to .bas
 
 Ive made a few changes from my roms default one;
 
-#Makes the username the device name
+##### Makes the username the device name
 - ${USER:=$(getprop ro.product.device)}
 
-# A seperate .aliases file for a few custom aliases of which more will likely be added
+### A seperate .aliases file for a few custom aliases of which more will likely be added
 - vd = cd
 - sudo = su -c "$@"
 - aflinger = sudo dumpsys media.audio_flinger
@@ -29,7 +29,7 @@ v1.1.2
 - Flash, reboot, open a terminal and try it out.
 
 ## Links
-[MKSH Documentation](Add link later)
+[MKSH Documentation](https://www.mirbsd.org/mksh.htm)
 
 Pull requests are welcome.
 [Module Github](https://github.com/skittles9823/mkshrc)
