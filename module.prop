@@ -1,0 +1,7 @@
+id=mkshrc
+name=mkshrc
+version=1.1.2
+versionCode=112
+author=Skittles9823
+description=Some small edits to make my life with android terminals a little better.
+minMagisk=1500

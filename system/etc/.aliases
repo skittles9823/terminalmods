@@ -1,0 +1,3 @@
+alias vd='cd'
+alias sudo='su -c "$@"'
+alias aflinger='sudo dumpsys media.audio_flinger'

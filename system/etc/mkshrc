@@ -1,0 +1,33 @@
+# Copyright (c) 2010
+#	Thorsten Glaser <t.glaser@tarent.de>
+# This file is provided under the same terms as mksh.
+#-
+# Minimal /system/etc/mkshrc for Android
+
+: ${TERM:=xterm-256color} ${HOME:=/data} ${MKSH:=/system/bin/sh} ${HOSTNAME:=android}
+: ${SHELL:=$MKSH} ${USER:=$(getprop ro.product.device)} ${ETC:=/system/etc}
+if (( USER_ID )); then PS1='$'; else PS1='#'; fi
+
+PS1='$USER@$HOSTNAME:${PWD:-?} '"$PS1 "
+export HOME HOSTNAME MKSH SHELL TERM USER
+alias l='ls'
+alias la='l -a'
+alias ll='l -l'
+alias lo='l -a -l'
+alias salias='. $ETC/.aliases'
+# Place your own aliases in /sbin/.core/img/mkshrc/system/etc/.aliases for
+# ease.
+
+for p in ~/.bin; do
+	[[ -d $p/. ]] || continue
+	[[ :$PATH: = *:$p:* ]] || PATH=$p:$PATH
+done
+
+unset p
+
+if [ -f "$ETC/.aliases" ]; then
+  . "$ETC/.aliases"
+fi
+
+
+: place customizations above this line
