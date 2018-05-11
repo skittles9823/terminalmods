@@ -1,3 +1,4 @@
 alias vd='cd'
 alias sudo='su -c "$@"'
 alias aflinger='sudo dumpsys media.audio_flinger'
+alias killice='sudo killall dk.icepower.icesound'
