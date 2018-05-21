@@ -12,6 +12,7 @@ Ive made a few changes from my roms default one;
 - vd = cd
 - sudo = su -c "$@"
 - aflinger = sudo dumpsys media.audio_flinger
+- dservice = sudo dumpsys media.dolby_memoryservice (Useful if you have Dolby Atmos)
 - killice = sudo killall dk.icepower.icesound (Only usefull if you have ICESound installed)
 - salias = . $ETC/.aliases ($ETC is /system/etc)
 
@@ -20,8 +21,12 @@ I'm unsure how compatible this module will be, I've tested this module on a Nexu
 I'm sure different devices will have a different stock mkshrcs so if you have issues with this module let me know what they are and send a copy of your stock mkshrc.
 
 ## Changelog
+v1.1.4
+- Add dservice alias (useful if you have Atmos)
+
 v1.1.3
 - Add killice alias (Primarily for myself)
+
 v1.1.2
 - Inital version
 
