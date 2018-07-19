@@ -4,19 +4,15 @@
 #-
 # Minimal /system/etc/mkshrc for Android
 
-: ${TERM:=xterm-256color} ${HOME:=/data} ${MKSH:=/system/bin/sh} ${HOSTNAME:=android}
-: ${SHELL:=$MKSH} ${USER:=$(getprop ro.product.device)} ${ETC:=/system/etc}
+: ${TERM:=xterm-256color} ${HOME:=/} ${MKSH:=/system/bin/sh} ${HOSTNAME:=android}
+: ${SHELL:=$MKSH} ${USER:=$(getprop ro.product.device)}
 if (( USER_ID )); then PS1='$'; else PS1='#'; fi
 
 PS1='$USER@$HOSTNAME:${PWD:-?} '"$PS1 "
-export HOME HOSTNAME MKSH SHELL TERM USER
-alias l='ls'
-alias la='l -a'
-alias ll='l -l'
-alias lo='l -a -l'
-alias salias='. $ETC/.aliases'
-# Place your own aliases in /sbin/.core/img/mkshrc/system/etc/.aliases for
-# ease.
+PATH=.:$PATH
+export TERM HOME MKSH HOSTNAME SHELL USER PATH
+alias salias='. /sdcard/.aliases'
+# Place your own aliases in /sdcard/.aliases for ease.
 
 for p in ~/.bin; do
 	[[ -d $p/. ]] || continue
@@ -25,9 +21,8 @@ done
 
 unset p
 
-if [ -f "$ETC/.aliases" ]; then
-  . "$ETC/.aliases"
+if [ -f "/sdcard/.aliases" ]; then
+  . "/sdcard/.aliases"
 fi
-
 
 : place customizations above this line
