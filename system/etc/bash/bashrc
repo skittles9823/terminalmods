@@ -41,7 +41,7 @@ alias sysro='mount -o remount,ro /system'
 alias sysrw='mount -o remount,rw /system'
 alias ls='ls --color=auto'
 
-. /sdcard/.bashrc
+. $EXTERNAL_STORAGE/.bashrc
 
 # Try to keep environment pollution down, EPA loves us.
 unset use_color safe_term match_lhs

@@ -1,6 +1,6 @@
-export user=android
+export host=android
+export user=$(getprop ro.product.device)
 export PATH=.:/sbin/.core/busybox:/sbin:/system/sbin:/system/bin:/system/xbin:/vendor/bin:/vendor/xbin
-export host=$(getprop ro.product.device)
 
 # Expand the history size
 HISTFILESIZE=10000 
@@ -16,6 +16,6 @@ cdn() {
   cd "$cmd"
 }
 
-. /sdcard/.aliases
+. $EXTERNAL_STORAGE/.aliases
 
 export PS1="\[\e[1;32m\]\@\[\e[m\]\[\e[1;31m\]:\[\e[m\]\[\e[1;31m\]\$user\[\e[m\]\[\e[1;33m\]@\[\e[m\]\[\e[1;33m\]\$host\[\e[m\]\[\e[1;36m\][\[\e[m\]\[\e[1;36m\]\w\[\e[m\]\[\e[1;36m\]]\[\e[m\]\[\e[1;36m\]\[\e[m\]\n~$ "

@@ -11,7 +11,6 @@ if (( USER_ID )); then PS1='$'; else PS1='#'; fi
 PS1='$USER@$HOSTNAME:${PWD:-?} '"$PS1 "
 PATH=.:$PATH
 export TERM HOME MKSH HOSTNAME SHELL USER PATH
-alias salias='. /sdcard/.aliases'
 # Place your own aliases in /sdcard/.aliases for ease.
 
 for p in ~/.bin; do
@@ -21,8 +20,8 @@ done
 
 unset p
 
-if [ -f "/sdcard/.aliases" ]; then
-  . "/sdcard/.aliases"
+if [ -f "$EXTERNAL_STORAGE/.aliases" ]; then
+  . "$EXTERNAL_STORAGE/.aliases"
 fi
 
 : place customizations above this line
