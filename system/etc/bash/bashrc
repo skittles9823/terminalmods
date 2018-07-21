@@ -41,7 +41,13 @@ alias sysro='mount -o remount,ro /system'
 alias sysrw='mount -o remount,rw /system'
 alias ls='ls --color=auto'
 
-. $EXTERNAL_STORAGE/.bashrc
+if [ -d /storage/emulated/0 ]; then
+    SDCARD=/storage/emulated/0
+  else
+    SDCARD=/data/media/0
+  fi
+
+. $SDCARD/.bashrc
 
 # Try to keep environment pollution down, EPA loves us.
 unset use_color safe_term match_lhs

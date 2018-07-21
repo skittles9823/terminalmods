@@ -20,8 +20,14 @@ done
 
 unset p
 
-if [ -f "$EXTERNAL_STORAGE/.aliases" ]; then
-  . "$EXTERNAL_STORAGE/.aliases"
+if [ -d /storage/emulated/0 ]; then
+    SDCARD=/storage/emulated/0
+  else
+    SDCARD=/data/media/0
+  fi
+
+if [ -f "$SDCARD/.aliases" ]; then
+  . "$SDCARD/.aliases"
 fi
 
 : place customizations above this line
