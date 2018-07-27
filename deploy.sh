@@ -1,0 +1,1 @@
+zip -r mkshrc.zip . -x "README.md" .x ".git/*" "LICENSE" "deploy.sh" ".gitignore"
