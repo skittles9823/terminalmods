@@ -37,10 +37,6 @@ else
 	PS1='\[\033[01;32m\]${USER:=$(id \-un)}@${HOSTNAME:=$(hostname)}\[\033[01;34m\] \w \$\[\033[00m\] '
 fi
 
-alias sysro='mount -o remount,ro /system'
-alias sysrw='mount -o remount,rw /system'
-alias ls='ls --color=auto'
-
 if [ -d /storage/emulated/0 ]; then
     SDCARD=/storage/emulated/0
   else
