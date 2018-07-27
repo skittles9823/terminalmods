@@ -18,10 +18,10 @@ to go.
  - [Unity](https://github.com/Zackptg5/Unity)
 
 ## Note
-I'm not sure how compatible the bash binary will be. It works for me on my 
-device, but it's built into my rom so just see for yourself if it works by 
-typing "bash" on the command line and if you successfully switched to the 
-bash shell then you have a successful installation!
+Some of the things here require the `bash` shell to be available on your device.
+[osm0sis](https://github.com/osm0sis) provides a Magisk module in the official
+repository with a constantly updated version that works on all devices, please
+install it when installing this module for the best experience.
 
 ## Changes
  - ${USER:=$(getprop ro.product.device)}
