@@ -16,6 +16,13 @@ cdn() {
   cd "$cmd"
 }
 
-. $EXTERNAL_STORAGE/.aliases
+. <SDCARD>/.aliases
 
-export PS1="\[\e[1;32m\]\@\[\e[m\]\[\e[1;31m\]:\[\e[m\]\[\e[1;31m\]\$user\[\e[m\]\[\e[1;33m\]@\[\e[m\]\[\e[1;33m\]\$host\[\e[m\]\[\e[1;36m\][\[\e[m\]\[\e[1;36m\]\w\[\e[m\]\[\e[1;36m\]]\[\e[m\]\[\e[1;36m\]\[\e[m\]\n~$ "
+# establish colours for PS1
+green="\e[1;32m"
+cyan="\e[1;36m"
+purple="\e[1;35m"
+blank="\e[m\]"
+
+# Sexy af PS1
+export PS1="$green┌[\@]$cyan[$user@$host]$purple[\w]\n$green└─$blank $ "

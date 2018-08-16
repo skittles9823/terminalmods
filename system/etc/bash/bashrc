@@ -37,13 +37,7 @@ else
 	PS1='\[\033[01;32m\]${USER:=$(id \-un)}@${HOSTNAME:=$(hostname)}\[\033[01;34m\] \w \$\[\033[00m\] '
 fi
 
-if [ -d /storage/emulated/0 ]; then
-    SDCARD=/storage/emulated/0
-  else
-    SDCARD=/data/media/0
-  fi
-
-. $SDCARD/.bashrc
+. <SDCARD>/.bashrc
 
 # Try to keep environment pollution down, EPA loves us.
 unset use_color safe_term match_lhs

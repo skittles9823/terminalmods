@@ -48,12 +48,18 @@ LATESTARTSERVICE=false
 
 # Custom Variables - Keep everything within this function
 unity_custom() {
-  if $MAGISK && $BOOTMODE; then ORIGDIR="/sbin/.core/mirror"; else ORIGDIR=""; fi
-  if $BOOTMODE; then
+  :
+}
+sed_files() {
+  if [ -d /sdcard ]; then
+    SDCARD=/sdcard
+  elif [ -d /storage/emulated/0 ]; then
     SDCARD=/storage/emulated/0
-  else
-    SDCARD=/data/media/0
   fi
+  ui_print "   Setting \$SDCARD location."
+  sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/custom/.bashrc
+  sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/mkshrc
+  sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/bash/bashrc
 }
 
 ##########################################################################################
