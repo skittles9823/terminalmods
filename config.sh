@@ -71,10 +71,10 @@ sed_files() {
 print_modname() {
   ui_print " "
   ui_print "                                               "
-  ui_print "                   M K S H R C                 " 
+  ui_print "                 T E R M I N A L               " 
   ui_print "            M O D I F I C A T I O N S          "
   ui_print "                                               "
-  ui_print "                     1.2.0                     "
+  ui_print "                     1.3.0                     "
   ui_print "                                               "
   ui_print "                by: Skittles9823               "
   ui_print "                                               "
@@ -115,9 +115,6 @@ set_permissions() {
   $MAGISK && set_perm_recursive $MODPATH 0 0 0755 0644
  
   # CUSTOM PERMISSIONS
-
-  set_perm_recursive $UNITY$SYS/xbin 0 2000 0755 0755
-  set_perm $UNITY$SYS/xbin/bash 0 2000 0755
 
   # Some templates if you have no idea what to do:
   # Note that all files/folders have the $UNITY prefix - keep this prefix on all of your files/folders

@@ -1,16 +1,16 @@
-# MKSHRC Modifications
+# Terminal Modifications
 
 ## Description
-This module edits a file in `system/etc` called `mkshrc` which works similar to 
-`.bashrc`/`.zshrc` on a Linux machine running bash or zsh respectively.
+This module edits the files `system/etc/mkshrc` and `system/etc/bash/bashrc`.
+Which works the same as `.bashrc`/`.zshrc` on a Linux machine running bash or zsh respectively.
 
 ## Instructions
 - Install the module from the Magisk Manager's Downloads section, then reboot.
-- In a terminal window type `echo ${EXTERNAL_STORAGE}` to find .aliases and .bashrc
+- Navigate to /sdcard to find .aliases and .bashrc
 
 ## Requirements
-- Make sure your device has `/system/etc/mkshrc`. If it does, you should be good
-to go.
+- This module should be universal so if you have any issues don't hesitate to create an issue
+on GitHub and I'll look into it ASAP.
 
 ## Sources and used/needed tools
  - [MKSH Documentation](https://www.mirbsd.org/mksh.htm)
@@ -39,21 +39,31 @@ to be executed without defining a filepath.
     - Grabs a system dump of Dolbys memory service.
 - killice  = `$ sudo killall dk.icepower.icesound`
     - Usefull if you have ICESound installed to easily kill the service and test its processing.
-- l        = `$ ls -1 --group-directories-first`
-    - Lists vertically and sorts with folders first.
+- l        = `$ ls --group-directories-first`
+    - Sorts with folders first.
 - nano     = `$ nano -l`
     - Adds line numbers to the nano GUI.
 - sbash    = `$ . system/etc/bash/bashrc`
     - Sources the bashrc file, useful if youve made changes to .aliases or .bashrc.
 - sudo     = `$ su -c "$@"`
     - Executes commands as superuser.
+- sysro    = `mount -o remount,ro /system'
+    - Mounts system as read only
+- sysrw    =`mount -o remount,rw /system'
+    - Mounts system as read - write
 - vd       = `$ cd`
     - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
 
+### v1.3.0
+ - Remove $EXTERNAL_STORAGE var and replace with a dynamic $SDCARD var that get set with sed.
+ - Remove bash binary.
+ - Sort README.
+ - New bash $PS1. It's sexy af.
+
 ### v1.2.0
- - Added bsu and sbash aliases
+ - Added bsu and sbash aliases.
  - Add bash binary (set "/system/xbin/bash -" as your command line in your terminal app to use bash by default.
  - Add $EXTERNAL_STORAGE/.bashrc and $EXTERNAL_STORAGE/.aliases for simplified command line changes.
 
