@@ -2,18 +2,18 @@
 #
 # Magisk Module Template Config Script
 # by topjohnwu
-# 
+#
 ##########################################################################################
 ##########################################################################################
-# 
+#
 # Instructions:
-# 
+#
 # 1. Place your files into system folder (delete the placeholder file)
 # 2. Fill in your module's info into module.prop
 # 3. Configure the settings in this file (config.sh)
 # 4. If you need boot scripts, add them into common/post-fs-data.sh or common/service.sh
 # 5. Add your additional or modified system properties into common/system.prop
-# 
+#
 ##########################################################################################
 
 ##########################################################################################
@@ -67,14 +67,14 @@ sed_files() {
 ##########################################################################################
 
 # Set what you want to show when installing your mod
-
+ver=$(grep "version=" $INSTALLER/module.prop | sed -r "s/version=//")
 print_modname() {
   ui_print " "
   ui_print "                                               "
-  ui_print "                 T E R M I N A L               " 
+  ui_print "                 T E R M I N A L               "
   ui_print "            M O D I F I C A T I O N S          "
   ui_print "                                               "
-  ui_print "                     1.3.0                     "
+  ui_print "                     $ver                      "
   ui_print "                                               "
   ui_print "                by: Skittles9823               "
   ui_print "                                               "
@@ -111,9 +111,9 @@ REPLACE="
 # NOTE: This part has to be adjusted to fit your own needs
 
 set_permissions() {
-  # DEFAULT PERMISSIONS, DON'T REMOVE THEM 
+  # DEFAULT PERMISSIONS, DON'T REMOVE THEM
   $MAGISK && set_perm_recursive $MODPATH 0 0 0755 0644
- 
+
   # CUSTOM PERMISSIONS
 
   # Some templates if you have no idea what to do:
