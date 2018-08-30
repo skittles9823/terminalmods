@@ -56,6 +56,9 @@ to be executed without defining a filepath.
 
 ## Changelog
 
+### v1.3.1
+ - Small updates to the install. (Only installs bash files if bash is detected)
+
 ### v1.3.0
  - Remove $EXTERNAL_STORAGE var and replace with a dynamic $SDCARD var that get set with sed.
  - Remove bash binary.
