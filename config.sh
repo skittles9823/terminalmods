@@ -67,7 +67,7 @@ sed_files() {
 ##########################################################################################
 
 # Set what you want to show when installing your mod
-ver=$(grep "version=" $INSTALLER/module.prop | sed -r "s/version=//")
+ver=$(sed -n "s/^version=//p" $INSTALLER/module.prop")
 print_modname() {
   ui_print " "
   ui_print "                                               "
