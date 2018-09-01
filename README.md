@@ -56,6 +56,9 @@ to be executed without defining a filepath.
 
 ## Changelog
 
+### v1.3.2
+ - Update to latest Unity template
+
 ### v1.3.1
  - Small updates to the install. (Only installs bash files if bash is detected)
 
