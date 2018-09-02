@@ -50,7 +50,7 @@ LATESTARTSERVICE=false
 #RAMDISK=true
 #DEBUG=true
 
-# Custom Variables - Keep everything within this function
+# Custom Variables for Install AND Uninstall - Keep everything within this function
 unity_custom() {
   :
 }
@@ -65,6 +65,8 @@ sed_files() {
   sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/mkshrc
   sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/bash/bashrc
 }
+
+# Custom Functions for Install AND Uninstall - You can put them here
 
 ##########################################################################################
 # Installation Message
