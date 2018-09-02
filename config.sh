@@ -60,7 +60,7 @@ sed_files() {
   elif [ -d /storage/emulated/0 ]; then
     SDCARD=/storage/emulated/0
   fi
-  ui_print "   Setting \$SDCARD location."
+  ui_print "   Setting $SDCARD location."
   sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/custom/.bashrc
   sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/mkshrc
   sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/bash/bashrc
@@ -73,7 +73,7 @@ sed_files() {
 ##########################################################################################
 
 # Set what you want to show when installing your mod
-ver=$(sed -n "s/^version=//p" $INSTALLER/module.prop")
+ver=$(sed -n "s/^version=//p" $INSTALLER/module.prop)
 print_modname() {
   ui_print " "
   ui_print "                                               "
