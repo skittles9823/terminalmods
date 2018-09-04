@@ -62,8 +62,8 @@ sed_files() {
   fi
   ui_print "   Setting $SDCARD location."
   sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/custom/.bashrc
-  sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/mkshrc
   sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/custom/bash/bashrc
+  sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/mkshrc
 }
 
 ##########################################################################################
@@ -71,8 +71,8 @@ sed_files() {
 ##########################################################################################
 
 # Set what you want to show when installing your mod
-ver=$(sed -n "s/^version=//p" $INSTALLER/module.prop)
 print_modname() {
+  ver=$(sed -n "s/^version=//p" $INSTALLER/module.prop)
   ui_print " "
   ui_print "                                               "
   ui_print "                 T E R M I N A L               "
