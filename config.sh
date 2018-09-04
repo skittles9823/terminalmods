@@ -63,7 +63,7 @@ sed_files() {
   ui_print "   Setting $SDCARD location."
   sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/custom/.bashrc
   sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/mkshrc
-  sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/bash/bashrc
+  sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/custom/bash/bashrc
 }
 
 ##########################################################################################
