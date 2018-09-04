@@ -57,11 +57,12 @@ to be executed without defining a filepath.
 ## Changelog
 
 ### v1.3.3
- - Update for Unity 1.7 and magisk 17.0
- - Fix sed_files function (will now correctly sed system/etc/bash/bashrc to source /sdcard/.bashrc)
+ - Update for Unity 1.7 and magisk 17.
+ - Fix sed_files function. (will now correctly sed system/etc/bash/bashrc to source /sdcard/.bashrc)
+ - Only copy .aliases and .bashrc to /sdcard if they don't already exist.
 
 ### v1.3.2
- - Update to latest Unity template
+ - Update to latest Unity template.
 
 ### v1.3.1
  - Small updates to the install. (Only installs bash files if bash is detected)
