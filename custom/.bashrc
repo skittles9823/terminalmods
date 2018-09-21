@@ -1,16 +1,16 @@
 export host=android
 export user=$(getprop ro.product.device)
-export PATH=$PATH:/sbin/.core/busybox:.
+export PATH=$PATH:/sbin/.core/busybox:/sbin:.
 
 # Expand the history size
-HISTFILESIZE=10000 
+HISTFILESIZE=10000
 HISTSIZE=100
 # ... and ignore same sucessive entries.
 HISTCONTROL=ignoreboth
 
 cdn() {
   cmd=""
-  for (( i=0; i < $1; i++)) do  
+  for (( i=0; i < $1; i++)) do
     cmd="$cmd../"
   done
   cd "$cmd"
