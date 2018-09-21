@@ -58,6 +58,7 @@ to be executed without defining a filepath.
 
 ### v1.3.4
  - Update to Unity 1.7.1
+ - Add /sbin to $PATH
 
 ### v1.3.3
  - Update for Unity 1.7 and magisk 17.

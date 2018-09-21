@@ -1,6 +1,6 @@
 export host=android
 export user=$(getprop ro.product.device)
-export PATH=$PATH:/sbin/.core/busybox:.
+export PATH=$PATH:/sbin/.core/busybox:/sbin:.
 
 # Expand the history size
 HISTFILESIZE=10000 
