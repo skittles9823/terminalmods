@@ -119,7 +119,7 @@ set_permissions() {
   $MAGISK && set_perm_recursive $MODPATH 0 0 0755 0644
 
   # CUSTOM PERMISSIONS
-
+  set_perm $UNITY$SYS/xbin/bash 0 2000 0755
   # Some templates if you have no idea what to do:
   # Note that all files/folders have the $UNITY prefix - keep this prefix on all of your files/folders
   # Also note the lack of '/' between variables - preceding slashes are already included in the variables
