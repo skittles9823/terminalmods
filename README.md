@@ -55,6 +55,8 @@ to be executed without defining a filepath.
     - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
+### v1.3.5
+ - Unity 1.7.2 update
 
 ### v1.3.4
  - Update to Unity 1.7.1
