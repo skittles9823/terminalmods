@@ -18,10 +18,8 @@ on GitHub and I'll look into it ASAP.
  - [Unity](https://github.com/Zackptg5/Unity)
 
 ## Note
-Some of the things here require the `bash` shell to be available on your device.
-[osm0sis](https://github.com/osm0sis) provides a Magisk module in the official
-repository with a constantly updated version that works on all devices, please
-install it when installing this module for the best experience.
+This module installs a static ARM bash binary compiled by @SphericalKat. If it doesn't work
+for you, let me know.
 
 ## Changes
  - ${USER:=$(getprop ro.product.device)}
@@ -55,8 +53,11 @@ to be executed without defining a filepath.
     - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
-### v1.3.5
+### v1.3.6
  - Unity 1.7.2 update
+
+### v1.3.5
+ - Add the bash binary again (compiled by @SphericalKat)
 
 ### v1.3.4
  - Update to Unity 1.7.1
