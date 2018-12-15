@@ -9,7 +9,7 @@
 if (( USER_ID )); then PS1='$'; else PS1='#'; fi
 
 PS1='$USER@$HOSTNAME:${PWD:-?} '"$PS1 "
-PATH=$PATH:/sbin/.core/busybox:/sbin:.
+PATH=$PATH:/sbin:/sbin/.magisk/busybox:.
 export TERM HOME MKSH HOSTNAME SHELL USER PATH
 # Place your own aliases in <SDCARD>/.aliases for ease.
 

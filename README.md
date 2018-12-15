@@ -9,8 +9,8 @@ Which works the same as `.bashrc`/`.zshrc` on a Linux machine running bash or zs
 - Navigate to /sdcard to find .aliases and .bashrc
 
 ## Requirements
-- This module should be universal so if you have any issues don't hesitate to create an issue
-on GitHub and I'll look into it ASAP.
+- This module should be universal so if you have any issues don't hesitate to create an issue on GitHub and I'll look into it ASAP.
+- Magisk 18+
 
 ## Sources and used/needed tools
  - [MKSH Documentation](https://www.mirbsd.org/mksh.htm)
@@ -18,15 +18,15 @@ on GitHub and I'll look into it ASAP.
  - [Unity](https://github.com/Zackptg5/Unity)
 
 ## Note
-This module installs a static ARM bash binary compiled by @SphericalKat. If it doesn't work
-for you, let me know.
+This module installs a static ARM bash binary compiled by @SphericalKat. If it doesn't work for you, let me know.
 
 ## Changes
  - ${USER:=$(getprop ro.product.device)}
-Make sure the username is the device name as opposed to u0_086ba or something similar.
- - PATH=.:$PATH
-'.' is the current directory so adding . to path allows files in the current directory 
-to be executed without defining a filepath.
+  - Make sure the username is the device name as opposed to u0_086ba or something similar.
+ - PATH=$PATH:/sbin:/sbin/.magisk/busybox:.
+  - '/sbin' contains various magisk binaries and more.
+  - '/sbin/.magisk/busybox' contains magisks internal busybox.
+  - '.' is the current directory so adding . to path allows files in the current directory to be executed without defining a filepath.
 
 #### Aliases
 - aflinger = `$ sudo dumpsys media.audio_flinger`
@@ -53,6 +53,12 @@ to be executed without defining a filepath.
     - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
+### v1.3.7
+ - update template to Unity 1.8.2
+ - fix bug with the colours in the PS1 that caused issues with long commands
+ - update mkshrc and .bashrc to reflect the path changes in Magisk 18
+ - slight readme update
+
 ### v1.3.6
  - Unity 1.7.2 update
 
@@ -75,7 +81,7 @@ to be executed without defining a filepath.
  - Small updates to the install. (Only installs bash files if bash is detected)
 
 ### v1.3.0
- - Remove $EXTERNAL_STORAGE var and replace with a dynamic $SDCARD var that get set with sed.
+ - Remove $EXTERNAL_STORAGE var and replace with a dynamic $SDCARD var that gets set with sed.
  - Remove bash binary.
  - Sort README.
  - New bash $PS1. It's sexy af.

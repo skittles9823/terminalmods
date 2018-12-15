@@ -1,6 +1,6 @@
 export host=android
 export user=$(getprop ro.product.device)
-export PATH=$PATH:/sbin/.core/busybox:/sbin:.
+export PATH=$PATH:/sbin:/sbin/.magisk/busybox:.
 
 # Expand the history size
 HISTFILESIZE=10000
@@ -19,9 +19,9 @@ cdn() {
 . <SDCARD>/.aliases
 
 # establish colours for PS1
-green="\e[1;32m"
-cyan="\e[1;36m"
-purple="\e[1;35m"
+green="\e[1;32m\]"
+cyan="\e[1;36m\]"
+purple="\e[1;35m\]"
 blank="\e[m\]"
 
 # Sexy af PS1
