@@ -11,12 +11,13 @@ if [ ! -f $SDCARD/.bashrc ]; then
 else
   ui_print "   $SDCARD/.bashrc found! Skipping overwrite."
 fi
+mkdir -p $INSTALLER/system/etc/bash
 if [ -d /sbin/.magisk/img/bash ] || [ -f /system/bin/bash ]; then
   ui_print "   bash found! Skipping overwrite."
   ui_print "   Copying bashrc to /system/etc/bash"
   cp $INSTALLER/custom/bash/bashrc $INSTALLER/system/etc/bash
 else
-  mkdir -p $INSTALLER/system/etc/bash; mkdir -p $INSTALLER/system/xbin
+  mkdir -p $INSTALLER/system/xbin
   cp $INSTALLER/custom/bashbinary $INSTALLER/system/xbin/bash
   ui_print "   Copying bash to /system/xbin/"
   ui_print "   Copying bashrc to /system/etc/bash"
