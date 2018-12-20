@@ -18,5 +18,5 @@ else
   cp $INSTALLER/custom/bashbinary $INSTALLER/system/xbin/bash
   ui_print "   Copying bash to /system/xbin/"
   ui_print "   Copying bashrc to /system/etc/bash"
-  cp $INSTALLER/custom/bash/bashrc $INSTALLER/system/etc/bash
+  cp $INSTALLER/custom/bash/bashrc $INSTALLER/system/etc/bash/bashrc
 fi
