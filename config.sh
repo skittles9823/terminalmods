@@ -36,37 +36,33 @@ POSTFSDATA=false
 LATESTARTSERVICE=false
 
 # Unity Variables
-# Uncomment and change 'MINAPI' and 'MAXAPI' to the minimum and maxium android version for your mod (note that magisk has it's own minimum api: 21 (lollipop))
+# Uncomment and change 'MINAPI' and 'MAXAPI' to the minimum and maxium android version for your mod (note that unity's minapi is 21 (lollipop) due to bash and magisk binaries)
 # Uncomment SEPOLICY if you have sepolicy patches in common/sepolicy.sh. Unity will take care of the rest
 # Uncomment DYNAMICOREO if you want libs installed to vendor for oreo and newer and system for anything older
 # Uncomment DYNAMICAPP if you want anything in $INSTALLER/system/app to be installed to the optimal app directory (/system/priv-app if it exists, /system/app otherwise)
 # Uncomment SYSOVERRIDE if you want the mod to always be installed to system (even on magisk)
-# Uncomment RAMDISK if you have ramdisk modifications. If you only want ramdisk patching as part of a conditional, just keep this commented out and set RAMDISK=true in that conditional.
-# Uncomment DEBUG if you want full debug logs (saved to SDCARD if in twrp, part of regular log if in magisk manager (user will need to save log after flashing)
-#MINAPI=21
+# Uncomment DEBUG if you want full debug logs (saved to SDCARD)
+MINAPI=21
 #MAXAPI=25
 #SEPOLICY=true
 #SYSOVERRIDE=true
 #DYNAMICOREO=true
 #DYNAMICAPP=true
-#RAMDISK=true
 #DEBUG=true
 
-# Custom Variables - Keep everything within this function
+# Custom Variables for Install AND Uninstall - Keep everything within this function - runs before uninstall/install
 unity_custom() {
   :
 }
-sed_files() {
-  if [ -d /sdcard ]; then
-    SDCARD=/sdcard
-  elif [ -d /storage/emulated/0 ]; then
-    SDCARD=/storage/emulated/0
-  fi
-  ui_print "   Setting $SDCARD location."
-  sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/custom/.bashrc
-  sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/custom/bash/bashrc
-  sed -i "s|<SDCARD>|$SDCARD|" $INSTALLER/system/etc/mkshrc
+
+# Things that ONLY run during an upgrade (occurs after unity_custom) - you probably won't need this
+# Note that the normal upgrade process is just an uninstall followed by an install
+unity_upgrade() {
+  :
 }
+
+
+# Custom Functions for Install AND Uninstall - You can put them here
 
 ##########################################################################################
 # Installation Message
@@ -74,13 +70,12 @@ sed_files() {
 
 # Set what you want to show when installing your mod
 print_modname() {
-  ver=$(sed -n "s/^version=//p" $INSTALLER/module.prop)
   ui_print " "
   ui_print "                                               "
   ui_print "                 T E R M I N A L               "
   ui_print "            M O D I F I C A T I O N S          "
   ui_print "                                               "
-  ui_print "                     $ver                      "
+  ui_print "    <version>                   "
   ui_print "                                               "
   ui_print "                by: Skittles9823               "
   ui_print "                                               "
@@ -121,7 +116,9 @@ set_permissions() {
   $MAGISK && set_perm_recursive $MODPATH 0 0 0755 0644
 
   # CUSTOM PERMISSIONS
+
   set_perm $UNITY$SYS/xbin/bash 0 2000 0755
+
   # Some templates if you have no idea what to do:
   # Note that all files/folders have the $UNITY prefix - keep this prefix on all of your files/folders
   # Also note the lack of '/' between variables - preceding slashes are already included in the variables

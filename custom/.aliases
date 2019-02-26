@@ -13,3 +13,9 @@ alias sudo='su -c "$@"'
 alias sysro='mount -o remount,ro /system'
 alias sysrw='mount -o remount,rw /system'
 alias vd='cd'
+
+# Functions which I'm gonna count as aliases
+getperms(){ pm get-privapp-permissions $1 | sed "s/, /\n/g"
+}
+getdenyperms(){ pm get-privapp-deny-permissions $1 | sed "s/, /\n/g"
+}

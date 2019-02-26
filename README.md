@@ -20,39 +20,62 @@ Which works the same as `.bashrc`/`.zshrc` on a Linux machine running bash or zs
 ## Note
 This module installs a static ARM bash binary compiled by @SphericalKat. If it doesn't work for you, let me know.
 
+## Updating procedure
+To update the module when new aliases or functions are added, backup all your custom changes to .bashrc and .aliases then delete those files and restore your changes later.
+
 ## Changes
- - ${USER:=$(getprop ro.product.device)}
-  - Make sure the username is the device name as opposed to u0_086ba or something similar.
- - PATH=$PATH:/sbin:/sbin/.magisk/busybox:.
-  - '/sbin' contains various magisk binaries and more.
-  - '/sbin/.magisk/busybox' contains magisks internal busybox.
-  - '.' is the current directory so adding . to path allows files in the current directory to be executed without defining a filepath.
+- ${USER:=$(getprop ro.product.device)}
+ - Make sure the username is the device name as opposed to u0_086ba or something similar.
+- PATH=$PATH:/sbin:/sbin/.magisk/busybox:.
+ - '/sbin' contains various magisk binaries and more.
+ - '/sbin/.magisk/busybox' contains magisks internal busybox.
+ - '.' is the current directory so adding . to path allows files in the current directory to be executed without defining a filepath.
+
+## Functions
+- cdn N
+ - cd back N number of dirs. e.g. `$ cdn 1` == `$ cd ../`
+- setpriority overlay high/low
+ - Change the priority of a specified overlay. e.g. `$ setpriority android.OutlineExtensions.EtherealColorPaletteLightPastelPurple high`
+- adbfi on/off/stats
+ - enable/disable adb over wifi with one command. e.g. `$ adbfi on`
 
 #### Aliases
 - aflinger = `$ sudo dumpsys media.audio_flinger`
-    - Get a dumpsys of media.audio_flinger, useful for trouble shooting audio issues.
-- bsu      = `$ su -s bash`
-    - Open a bash shell with superuser privelages.
+ - Get a dumpsys of media.audio_flinger, useful for trouble shooting audio issues.
+- bsu = `$ su -s bash`
+ - Open a bash shell with superuser privelages.
 - dservice = `$ sudo dumpsys media.dolby_memoryservice`
-    - Grabs a system dump of Dolbys memory service.
-- killice  = `$ sudo killall dk.icepower.icesound`
-    - Usefull if you have ICESound installed to easily kill the service and test its processing.
-- l        = `$ ls --group-directories-first`
-    - Sorts with folders first.
-- nano     = `$ nano -l`
-    - Adds line numbers to the nano GUI.
-- sbash    = `$ . system/etc/bash/bashrc`
-    - Sources the bashrc file, useful if youve made changes to .aliases or .bashrc.
-- sudo     = `$ su -c "$@"`
-    - Executes commands as superuser.
-- sysro    = `mount -o remount,ro /system'
-    - Mounts system as read only
-- sysrw    =`mount -o remount,rw /system'
-    - Mounts system as read - write
-- vd       = `$ cd`
-    - Fat thumbs + small dpi = annoying ;_;
+ - Grabs a system dump of Dolbys memory service.
+- getperms = `$ pm get-privapp-permissions $1`
+ - List all privileged permissions for a specified package.
+- getdenyperms = `$ pm get-privapp-deny-permissions $1`
+ - Lists all denied privelaged permissions for a specified package.
+- killice = `$ sudo killall dk.icepower.icesound`
+ - Usefull if you have ICESound installed to easily kill the service and test if it's processing.
+- l = `$ ls --group-directories-first`
+ - Sorts with folders first.
+- nano = `$ nano -l`
+ - Adds line numbers to the nano GUI.
+- sbash = `$ . system/etc/bash/bashrc`
+ - Sources the bashrc file, useful if you've made changes to .aliases or .bashrc.
+- sudo = `$ su -c "$@"`
+ - Executes commands as superuser.
+- sysro = `$ mount -o remount,ro /system`
+ - Mounts system as read only
+- sysrw =`$ mount -o remount,rw /system`
+ - Mounts system as read - write
+- vd = `$ cd`
+ - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
+### v1.3.8
+ - Unity 3.1 update
+ - add setpriority and adbfi functions
+ - add getperms and getdenyperms aliases (technically they're functions because reasons)
+ - lower minMagisk to 1530 and make sure the old magisk path is able to be used
+ - general improvements
+ - update readme
+
 ### v1.3.7
  - update template to Unity 1.8.2
  - fix bug with the colours in the PS1 that caused issues with long commands
