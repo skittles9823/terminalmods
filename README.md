@@ -18,10 +18,10 @@ Which works the same as `.bashrc`/`.zshrc` on a Linux machine running bash or zs
  - [Unity](https://github.com/Zackptg5/Unity)
 
 ## Note
-This module installs a static ARM bash binary compiled by @SphericalKat. If it doesn't work for you, let me know.
+To make full use of the .bashrc additions, install the bash module by Zackptg5
 
 ## Updating procedure
-To update the module when new aliases or functions are added, backup all your custom changes to .bashrc and .aliases then delete those files and restore your changes later.
+The module creates a backup of .bashrc .aliases every time it's flashed. If you've made custom changes simply them back over to the updated files.
 
 ## Changes
 - ${USER:=$(getprop ro.product.device)}
@@ -42,6 +42,8 @@ To update the module when new aliases or functions are added, backup all your cu
 #### Aliases
 - aflinger = `$ sudo dumpsys media.audio_flinger`
  - Get a dumpsys of media.audio_flinger, useful for trouble shooting audio issues.
+- bb = `$ $BBPATH/busybox`
+ - Calls magisks busybox if possible. Used to force specific versions of commands.
 - bsu = `$ su -s bash`
  - Open a bash shell with superuser privelages.
 - dservice = `$ sudo dumpsys media.dolby_memoryservice`
@@ -53,7 +55,7 @@ To update the module when new aliases or functions are added, backup all your cu
 - killice = `$ sudo killall dk.icepower.icesound`
  - Usefull if you have ICESound installed to easily kill the service and test if it's processing.
 - l = `$ ls --group-directories-first`
- - Sorts with folders first.
+ - Sorts with folders first. Will use Magisks busybox for ls if detected. If not, will use default ls without the --group-directories-first parameter.
 - nano = `$ nano -l`
  - Adds line numbers to the nano GUI.
 - sbash = `$ . system/etc/bash/bashrc`
@@ -68,11 +70,19 @@ To update the module when new aliases or functions are added, backup all your cu
  - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
+### v1.4.0
+ - switch to updated magisk module template
+
+### v1.3.9
+ - remove bash from the module - just use Zackptg5s bash installer
+ - Unity 3.3 update
+ - better handling of updating .bashrc and .aliases
+
 ### v1.3.8
  - Unity 3.1 update
  - add setpriority and adbfi functions
  - add getperms and getdenyperms aliases (technically they're functions because reasons)
- - lower minMagisk to 1530 and make sure the old magisk path is able to be used
+ - minMagisk to 1530 and make sure the old magisk path is able to be used
  - general improvements
  - update readme
 

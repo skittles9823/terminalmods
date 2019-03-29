@@ -1,7 +1,6 @@
 id=terminalmods
 name=Terminal Modifications
-version=v1.3.8
-versionCode=138
+version=v1.4.0
+versionCode=140
 author=Skittles9823
 description=Android terminal - The way it should be
-minMagisk=1530
