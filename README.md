@@ -70,6 +70,9 @@ The module creates a backup of .bashrc .aliases every time it's flashed. If you'
  - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
+### v1.4.1
+ - misc improvements and bug fixes
+
 ### v1.4.0
  - switch to updated magisk module template
 

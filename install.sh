@@ -127,7 +127,7 @@ print_modname() {
   ui_print "                 T E R M I N A L               "
   ui_print "            M O D I F I C A T I O N S          "
   ui_print "                                               "
-  ui_print "                    v1.4.0                     "
+  ui_print "                    v1.4.1                     "
   ui_print "                                               "
   ui_print "                by: Skittles9823               "
   ui_print "                                               "
@@ -141,31 +141,32 @@ on_install() {
   # The following is the default implementation: extract $ZIPFILE/system to $MODPATH
   # Extend/change the logic to whatever you want
   ui_print "- Extracting module files"
+  unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
+  unzip -o "$ZIPFILE" 'custom/*' -d $TMPDIR >&2
   if [ -d /sdcard ]; then
     SDCARD=/sdcard
   elif [ -d /storage/emulated/0 ]; then
     SDCARD=/storage/emulated/0
   fi
   ui_print "   Setting $SDCARD location."
-  sed -i "s|<SDCARD>|$SDCARD|" $ZIPFILE/custom/.bashrc
-  sed -i "s|<SDCARD>|$SDCARD|" $ZIPFILE/system/etc/mkshrc
+  sed -i "s|<SDCARD>|$SDCARD|" $TMPDIR/custom/.bashrc
+  sed -i "s|<SDCARD>|$SDCARD|" $MODPATH/system/etc/mkshrc
   if [ ! -f $SDCARD/.aliases ]; then
     ui_print "   Copying .aliases to $SDCARD"
-    cp $ZIPFILE/custom/.aliases $SDCARD
+    cp $TMPDIR/custom/.aliases $SDCARD
   else
     ui_print "   $SDCARD/.aliases found! Backing up and overwriting!"
     cp -rf $SDCARD/.aliases $SDCARD/.aliases.bak
-    cp $ZIPFILE/custom/.aliases $SDCARD
+    cp -rf $TMPDIR/custom/.aliases $SDCARD
   fi
   if [ ! -f $SDCARD/.bashrc ]; then
     ui_print "   Copying .bashrc to $SDCARD"
-    cp $ZIPFILE/custom/.bashrc $SDCARD
+    cp $TMPDIR/custom/.bashrc $SDCARD
   else
     ui_print "   $SDCARD/.bashrc found! Backing up and overwriting!"
     cp -rf $SDCARD/.bashrc $SDCARD/.bashrc.bak
-    cp $ZIPFILE/custom/.bashrc $SDCARD
+    cp -rf $TMPDIR/custom/.bashrc $SDCARD
   fi
-  unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
 }
 
 # Only some special files require specific permissions
