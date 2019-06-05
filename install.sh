@@ -122,16 +122,17 @@ REPLACE="
 # Set what you want to display when installing your module
 
 print_modname() {
+  VER=$(grep version= $TMPDIR/module.prop | sed 's/.*=//')
   ui_print " "
-  ui_print "                                               "
-  ui_print "                 T E R M I N A L               "
-  ui_print "            M O D I F I C A T I O N S          "
-  ui_print "                                               "
-  ui_print "                    v1.4.1                     "
-  ui_print "                                               "
-  ui_print "                by: Skittles9823               "
-  ui_print "                                               "
-  ui_print "                                               "
+  ui_print "                                             "
+  ui_print "               T E R M I N A L               "
+  ui_print "          M O D I F I C A T I O N S          "
+  ui_print "                                             "
+  ui_print "                   $VER                      "
+  ui_print "                                             "
+  ui_print "               by: Skittles9823              "
+  ui_print "                                             "
+  ui_print "                                             "
   ui_print " "
 }
 
@@ -143,6 +144,8 @@ on_install() {
   ui_print "- Extracting module files"
   unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
   unzip -o "$ZIPFILE" 'custom/*' -d $TMPDIR >&2
+  find $MODPATH -type f | sed 's/_update//'
+  find $TMPDIR -type f | sed -e 's|/dev/tmp/||' -e 's|custom/|/sdcard/|'
   if [ -d /sdcard ]; then
     SDCARD=/sdcard
   elif [ -d /storage/emulated/0 ]; then
@@ -151,6 +154,7 @@ on_install() {
   ui_print "   Setting $SDCARD location."
   sed -i "s|<SDCARD>|$SDCARD|" $TMPDIR/custom/.bashrc
   sed -i "s|<SDCARD>|$SDCARD|" $MODPATH/system/etc/mkshrc
+  touch $SDCARD/.customrc
   if [ ! -f $SDCARD/.aliases ]; then
     ui_print "   Copying .aliases to $SDCARD"
     cp $TMPDIR/custom/.aliases $SDCARD

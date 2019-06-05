@@ -1,16 +1,14 @@
+# .bashrc by Skittles9823 2018 - 2019
+#           Terminal Mods
+
 export host=android
 export HOME=/
 export HOSTNAME=$(getprop ro.product.device)
 export TERM=xterm
 export TMPDIR=/data/local/tmp
 export USER=$(id -un)
-
-if [ -d "/sbin/.magisk/busybox" ]; then
-  BBDIR=":/sbin/.magisk/busybox"
-elif [ -d "/sbin/.core/busybox" ]; then
-  BBDIR=":/sbin/.core/busybox"
-fi
-PATH=$PATH:/sbin:.$BBDIR
+export BBDIR="/sbin/.magisk/busybox"
+export PATH=${BBDIR}:${PATH}:.
 
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
@@ -27,35 +25,40 @@ HISTSIZE=100
 # ... and ignore same sucessive entries.
 HISTCONTROL=ignoreboth
 
-cdn() {
+rootcheck(){
+  ROOT= && [ $USER = root ] || ROOT="su -c"
+}
+cdn(){
   cmd=""
   for (( i=0; i < $1; i++)) do
     cmd="$cmd../"
   done
   cd "$cmd"
 }
-setpriority() {
-case $2 in
-    high) su -c cmd overlay set-priority $1 lowest
-          su -c cmd overlay set-priority $1 highest;;
-    low) su -c cmd overlay set-priority $1 highest
-         su -c cmd overlay set-priority $1 lowest;;
-    *) echo "Usage: setpriority overlay [option]"
-       echo " "
-       echo "Options:"
-       echo " high - Sets the overlay to the highest priority"
-       echo " low  - Sets the overlay to the lowest priority";;
-  esac
+setpriority(){
+  rootcheck
+  case $2 in
+      high) $ROOT cmd overlay set-priority $1 lowest
+            $ROOT cmd overlay set-priority $1 highest;;
+      low) $ROOT cmd overlay set-priority $1 highest
+           $ROOT cmd overlay set-priority $1 lowest;;
+      *) echo "Usage: setpriority overlay [option]"
+         echo " "
+         echo "Options:"
+         echo " high - Sets the overlay to the highest priority"
+         echo " low  - Sets the overlay to the lowest priority";;
+    esac
 }
-adbfi() {
+adbfi(){
+  rootcheck
   case $1 in
-    on) setprop service.adb.tcp.port 5555
-        su -c stop adbd
-        su -c start adbd
+    on) $ROOT setprop service.adb.tcp.port 5555
+        $ROOT stop adbd
+        $ROOT start adbd
         echo "ADB over WiFi enabled";;
-    off) setprop service.adb.tcp.port -1
-         su -c stop adbd
-         su -c start adbd
+    off) $ROOT setprop service.adb.tcp.port -1
+         $ROOT stop adbd
+         $ROOT start adbd
          echo "ADB over WiFi disabled";;
     stats) case `getprop service.adb.tcp.port` in -1) echo "off";; 5555) echo "on";; *) echo "off";; esac;;
     *) echo "Usage: adbfi [option]"
@@ -66,8 +69,29 @@ adbfi() {
        echo " stats - Gets current status";;
   esac
 }
+overlays(){
+  opt=$1
+  rootcheck
+  [ "$2" ] || opt=null
+  case $opt in
+    enable) shift
+            for i in $($ROOT cmd overlay list | grep -iE "^\[.*$1" | sed 's|\[.* ||g'); do $ROOT cmd overlay enable $i; done;;
+    disable) shift
+             for i in $($ROOT cmd overlay list | grep -iE "^\[.*$1" | sed 's|\[.* ||g'); do $ROOT cmd overlay disable $i; done;;
+    list) shift
+          overlayList=$($ROOT cmd overlay list | grep -iE "^\[.*$1")
+          echo "$overlayList";;
+    *) echo "Usage: overlays [option] (keyword)"
+       echo " "
+       echo "Options:"
+       echo " enable  - Enables all overlays that include the keyword in the packagename"
+       echo " disable - Disables all overlays that include the keyword in the packagename"
+       echo " list    - Lists all overlays that include the keyword in the packagename";;
+  esac
+}
 
-. <SDCARD>/.aliases
+. /sdcard/.aliases
+. /sdcard/.customrc
 
 # establish colours for PS1
 green="\e[1;32m\]"
@@ -76,4 +100,4 @@ purple="\e[1;35m\]"
 blank="\e[m\]"
 
 # Sexy af PS1
-export PS1="$green┌[\@]$cyan[$HOSTNAME@$host]$purple[\w]\n$green└─$blank $ "
+export PS1="${green}┌[\@]${cyan}[${HOSTNAME}@${host}]${purple}[\W]\n${green}└─${blank} \$ "

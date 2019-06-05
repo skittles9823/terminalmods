@@ -32,12 +32,18 @@ The module creates a backup of .bashrc .aliases every time it's flashed. If you'
  - '.' is the current directory so adding . to path allows files in the current directory to be executed without defining a filepath.
 
 ## Functions
-- cdn N
- - cd back N number of dirs. e.g. `$ cdn 1` == `$ cd ../`
-- setpriority overlay high/low
- - Change the priority of a specified overlay. e.g. `$ setpriority android.OutlineExtensions.EtherealColorPaletteLightPastelPurple high`
-- adbfi on/off/stats
- - enable/disable adb over wifi with one command. e.g. `$ adbfi on`
+- cdn [N]
+ - cd back N number of dirs. 
+ - e.g. `$ cdn 1` == `$ cd ../`
+- setpriority [overlay] [high|low]
+ - Change the priority of a specified overlay. 
+ - e.g. `$ setpriority android.OutlineExtensions.EtherealColorPaletteLightPastelPurple high`
+- adbfi [on|off|stats]
+ - enable/disable adb over wifi with one command. 
+ - e.g. `$ adbfi on`
+- overlay [list|enable|disable] [arg]
+ - find package names matching [arg] (case insensitive) then will [list|enable|disable] all matching overlays
+ - e.g. `overlay list ethereal`
 
 #### Aliases
 - aflinger = `$ sudo dumpsys media.audio_flinger`
@@ -58,7 +64,7 @@ The module creates a backup of .bashrc .aliases every time it's flashed. If you'
  - Sorts with folders first. Will use Magisks busybox for ls if detected. If not, will use default ls without the --group-directories-first parameter.
 - nano = `$ nano -l`
  - Adds line numbers to the nano GUI.
-- sbash = `$ . system/etc/bash/bashrc`
+- sbash = `$ . /system/etc/bash/bashrc`
  - Sources the bashrc file, useful if you've made changes to .aliases or .bashrc.
 - sudo = `$ su -c "$@"`
  - Executes commands as superuser.
@@ -70,6 +76,14 @@ The module creates a backup of .bashrc .aliases every time it's flashed. If you'
  - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
+### v1.4.3
+- fix all broken aliases and functions (overlay function now works flawlessly)
+
+### v1.4.2
+ - add support for /sdcard/.customrc for any specific additions which will persist with updates
+ - new template is Magisk only so let's remove the Magisk checks
+ - add check to prepend `su -c` to commands when not running as root and without it when running as root
+
 ### v1.4.1
  - misc improvements and bug fixes
 
