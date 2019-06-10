@@ -8,7 +8,7 @@ export TERM=xterm
 export TMPDIR=/data/local/tmp
 export USER=$(id -un)
 export BBDIR="/sbin/.magisk/busybox"
-export PATH=${BBDIR}:${PATH}:.
+export PATH=/sbin:${BBDIR}:${PATH}:.
 
 # Bash won't get SIGWINCH if another process is in the foreground.
 # Enable checkwinsize so that bash will check the terminal size when
@@ -90,8 +90,8 @@ overlays(){
   esac
 }
 
-. /sdcard/.aliases
-. /sdcard/.customrc
+. <SDCARD>/.aliases
+. <SDCARD>/.customrc
 
 # establish colours for PS1
 green="\e[1;32m\]"
@@ -100,4 +100,4 @@ purple="\e[1;35m\]"
 blank="\e[m\]"
 
 # Sexy af PS1
-export PS1="${green}┌[\@]${cyan}[${HOSTNAME}@${host}]${purple}[\W]\n${green}└─${blank} \$ "
+export PS1="${green}┌|\@${cyan} ${HOSTNAME} at ${host}${purple} in \W \n${green}└─${blank} \$ "
