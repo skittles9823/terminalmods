@@ -76,6 +76,12 @@ The module creates a backup of .bashrc .aliases every time it's flashed. If you'
  - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
+### v1.4.4
+- hopefully fix the `$PS1` clipping issue
+- oops, last update I forgot to rename `/sdcard` to `<SDCARD>`
+- add `/sbin` back to `$PATH`
+- change all uses of `sudo` in .aliases to `$ROOT`
+
 ### v1.4.3
 - fix all broken aliases and functions (overlay function now works flawlessly)
 
