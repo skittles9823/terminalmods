@@ -144,6 +144,7 @@ on_install() {
   ui_print "- Extracting module files"
   unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
   unzip -o "$ZIPFILE" 'custom/*' -d $TMPDIR >&2
+  [ -d /system/xbin ] && BIN=/system/xbin || BIN=/system/bin
   find $MODPATH -type f | sed 's/_update//'
   find $TMPDIR -type f | sed -e 's|/dev/tmp/||' -e 's|custom/|/sdcard/|'
   if [ -d /sdcard ]; then
@@ -152,8 +153,9 @@ on_install() {
     SDCARD=/storage/emulated/0
   fi
   ui_print "   Setting $SDCARD location."
-  sed -i "s|<SDCARD>|$SDCARD|" $TMPDIR/custom/.bashrc
-  sed -i "s|<SDCARD>|$SDCARD|" $MODPATH/system/etc/mkshrc
+  sed -i "s|<SDCARD>|$SDCARD|g" $TMPDIR/custom/.bashrc
+  sed -i "s|<SDCARD>|$SDCARD|g" $MODPATH/system/etc/mkshrc
+  sed -i "s|<BIN>|$BIN|g" $TMPDIR/custom/.bashrc
   touch $SDCARD/.customrc
   if [ ! -f $SDCARD/.aliases ]; then
     ui_print "   Copying .aliases to $SDCARD"

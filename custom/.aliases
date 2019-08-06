@@ -1,17 +1,18 @@
 # .aliases by Skittles9823 2018 - 2019
 #           Terminal Mods
-alias aflinger='$ROOT dumpsys media.audio_flinger'
+
+alias aflinger='rootcheck && $ROOT dumpsys media.audio_flinger'
 alias bb='$BBDIR/busybox'
 alias bsu='su -s bash'
-alias dservice='$ROOT dumpsys media.dolby_memoryservice'
-alias killice='$ROOT killall dk.icepower.icesound'
-alias l='$BBDIR/ls --color=auto --group-directories-first'
+alias dservice='rootcheck && $ROOT dumpsys media.dolby_memoryservice'
+alias killice='rootcheck && $ROOT killall dk.icepower.icesound'
+alias l='ls --group-directories-first'
 alias la='l -A'
 alias ll='l -l'
 alias lo='l -al'
 alias ls='ls --color=auto'
 alias nano='nano -l'
-alias killpac='$ROOT kill $(pidof $1)'
+alias killpac='rootcheck && $ROOT kill $(pidof $1)'
 alias sbash='. /system/etc/bash/bashrc'
 alias sudo='su -c "$@"'
 alias sysro='mount -o remount,ro /system'
@@ -19,7 +20,7 @@ alias sysrw='mount -o remount,rw /system'
 alias vd='cd'
 
 # Functions which I'm gonna count as aliases
-getperms(){ $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g" 
+getperms(){ rootcheck && $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g" 
 }
-getdenyperms(){ $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g" 
+getdenyperms(){ rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g" 
 }

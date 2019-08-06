@@ -15,10 +15,9 @@ Which works the same as `.bashrc`/`.zshrc` on a Linux machine running bash or zs
 ## Sources and used/needed tools
  - [MKSH Documentation](https://www.mirbsd.org/mksh.htm)
  - [Module source](https://github.com/skittles9823/mkshrc)
- - [Unity](https://github.com/Zackptg5/Unity)
 
 ## Note
-To make full use of the .bashrc additions, install the bash module by Zackptg5
+To make full use of the .bashrc and .gnualiases additions, install the GNU Utils module by Zackptg5
 
 ## Updating procedure
 The module creates a backup of .bashrc .aliases every time it's flashed. If you've made custom changes simply them back over to the updated files.
@@ -76,6 +75,11 @@ The module creates a backup of .bashrc .aliases every time it's flashed. If you'
  - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
+### v1.4.5
+- add `createaliases` command which will create/update /sdcard/.gnualiases to add aliases for the commands added from the gnu utils module
+- cp and mv have been aliased to always use the -g flag to show the progress bar when the gnu Utils module is installed
+- fix functions which used the $root variable
+
 ### v1.4.4
 - hopefully fix the `$PS1` clipping issue
 - oops, last update I forgot to rename `/sdcard` to `<SDCARD>`
