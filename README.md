@@ -75,6 +75,9 @@ The module creates a backup of .bashrc .aliases every time it's flashed. If you'
  - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
+### v1.4.6
+- update to latest Magisk module template
+
 ### v1.4.5
 - add `createaliases` command which will create/update /sdcard/.gnualiases to add aliases for the commands added from the gnu utils module
 - cp and mv have been aliased to always use the -g flag to show the progress bar when the gnu Utils module is installed
