@@ -24,55 +24,55 @@ The module creates a backup of .bashrc .aliases every time it's flashed. If you'
 
 ## Changes
 - ${USER:=$(getprop ro.product.device)}
- - Make sure the username is the device name as opposed to u0_086ba or something similar.
+  - Make sure the username is the device name as opposed to u0_086ba or something similar.
 - PATH=$PATH:/sbin:/sbin/.magisk/busybox:.
- - '/sbin' contains various magisk binaries and more.
- - '/sbin/.magisk/busybox' contains magisks internal busybox.
- - '.' is the current directory so adding . to path allows files in the current directory to be executed without defining a filepath.
+  - '/sbin' contains various magisk binaries and more.
+  - '/sbin/.magisk/busybox' contains magisks internal busybox.
+  - '.' is the current directory so adding . to path allows files in the current directory to be executed without defining a filepath.
 
 ## Functions
 - cdn [N]
- - cd back N number of dirs. 
- - e.g. `$ cdn 1` == `$ cd ../`
+  - cd back N number of dirs. 
+  - e.g. `$ cdn 1` == `$ cd ../`
 - setpriority [overlay] [high|low]
- - Change the priority of a specified overlay. 
- - e.g. `$ setpriority android.OutlineExtensions.EtherealColorPaletteLightPastelPurple high`
+  - Change the priority of a specified overlay. 
+  - e.g. `$ setpriority android.OutlineExtensions.EtherealColorPaletteLightPastelPurple high`
 - adbfi [on|off|stats]
- - enable/disable adb over wifi with one command. 
- - e.g. `$ adbfi on`
+  - enable/disable adb over wifi with one command. 
+  - e.g. `$ adbfi on`
 - overlay [list|enable|disable] [arg]
- - find package names matching [arg] (case insensitive) then will [list|enable|disable] all matching overlays
- - e.g. `overlay list ethereal`
+  - find package names matching [arg] (case insensitive) then will [list|enable|disable] all matching overlays
+  - e.g. `overlay list ethereal`
 
 #### Aliases
 - aflinger = `$ sudo dumpsys media.audio_flinger`
- - Get a dumpsys of media.audio_flinger, useful for trouble shooting audio issues.
+  - Get a dumpsys of media.audio_flinger, useful for trouble shooting audio issues.
 - bb = `$ $BBPATH/busybox`
- - Calls magisks busybox if possible. Used to force specific versions of commands.
+  - Calls magisks busybox if possible. Used to force specific versions of commands.
 - bsu = `$ su -s bash`
- - Open a bash shell with superuser privelages.
+  - Open a bash shell with superuser privelages.
 - dservice = `$ sudo dumpsys media.dolby_memoryservice`
- - Grabs a system dump of Dolbys memory service.
+  - Grabs a system dump of Dolbys memory service.
 - getperms = `$ pm get-privapp-permissions $1`
- - List all privileged permissions for a specified package.
+  - List all privileged permissions for a specified package.
 - getdenyperms = `$ pm get-privapp-deny-permissions $1`
- - Lists all denied privelaged permissions for a specified package.
+  - Lists all denied privelaged permissions for a specified package.
 - killice = `$ sudo killall dk.icepower.icesound`
- - Usefull if you have ICESound installed to easily kill the service and test if it's processing.
+  - Usefull if you have ICESound installed to easily kill the service and test if it's processing.
 - l = `$ ls --group-directories-first`
- - Sorts with folders first. Will use Magisks busybox for ls if detected. If not, will use default ls without the --group-directories-first parameter.
+  - Sorts with folders first. Will use Magisks busybox for ls if detected. If not, will use default ls without the --group-directories-first parameter.
 - nano = `$ nano -l`
- - Adds line numbers to the nano GUI.
+  - Adds line numbers to the nano GUI.
 - sbash = `$ . /system/etc/bash/bashrc`
- - Sources the bashrc file, useful if you've made changes to .aliases or .bashrc.
+  - Sources the bashrc file, useful if you've made changes to .aliases or .bashrc.
 - sudo = `$ su -c "$@"`
- - Executes commands as superuser.
+  - Executes commands as superuser.
 - sysro = `$ mount -o remount,ro /system`
- - Mounts system as read only
+  - Mounts system as read only
 - sysrw =`$ mount -o remount,rw /system`
- - Mounts system as read - write
+  - Mounts system as read - write
 - vd = `$ cd`
- - Fat thumbs + small dpi = annoying ;_;
+  - Fat thumbs + small dpi = annoying ;_;
 
 ## Changelog
 ### v1.4.6
