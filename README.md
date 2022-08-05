@@ -1,12 +1,12 @@
 # Terminal Modifications
 
 ## Description
-This module edits the files `system/etc/mkshrc` and `system/etc/bash/bashrc`.
+This module edits the file `system/etc/mkshrc`
 Which works the same as `.bashrc`/`.zshrc` on a Linux machine running bash or zsh respectively.
 
 ## Instructions
 - Install the module from the Magisk Manager's Downloads section, then reboot.
-- Navigate to /sdcard to find .aliases and .bashrc
+- Navigate to /sdcard to find .aliases
 
 ## Requirements
 - This module should be universal so if you have any issues don't hesitate to create an issue on GitHub and I'll look into it ASAP.
@@ -17,12 +17,12 @@ Which works the same as `.bashrc`/`.zshrc` on a Linux machine running bash or zs
  - [Module source](https://github.com/skittles9823/mkshrc)
 
 ## Notes
-- To make full use of the .bashrc addition, install the [ccbins module by Zackptg5](https://github.com/Magisk-Modules-Repo/ccbins)
+- For bash, install the [ccbins module by Zackptg5](https://github.com/Magisk-Modules-Repo/ccbins)
 - For proper busybox access as non-root user, it's recommended to install [busybox module by Osm0sis](https://github.com/Magisk-Modules-Repo/busybox-ndk)
 - Apps with scoped storage (such as temrius) cannot access /sdcard. You may need to copy the rc files from /sdcard to their local private storage directory as root and change paths accordingly
 
 ## Updating procedure
-The module creates a backup of .bashrc .aliases every time it's flashed. If you've made custom changes simply them back over to the updated files.
+The module creates a backup of .aliases every time it's flashed. If you've made custom changes simply them back over to the updated files.
 
 ## Changes
 - ${USER:=$(getprop ro.product.device)}
