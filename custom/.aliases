@@ -15,8 +15,6 @@ alias nano='nano -l'
 alias killpac='rootcheck && $ROOT kill $(pidof $1)'
 alias sbash='. /system/etc/bash/bashrc'
 alias sudo='su -c "$@"'
-alias sysro='mount -o remount,ro /system'
-alias sysrw='mount -o remount,rw /system'
 alias vd='cd'
 
 # Functions which I'm gonna count as aliases

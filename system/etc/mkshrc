@@ -8,13 +8,7 @@
 : ${SHELL:=$MKSH} ${USER:=$(getprop ro.product.device)}
 if (( USER_ID )); then PS1='$'; else PS1='#'; fi
 
-PS1='$USER@$HOSTNAME:${PWD:-?} '"$PS1 "
-if [ -d "/sbin/.magisk/busybox" ]; then
-  BBDIR="/sbin/.magisk/busybox"
-elif [ -d "/sbin/.core/busybox" ]; then
-  BBDIR="/sbin/.core/busybox"
-fi
-PATH=$PATH:/sbin:$BBDIR:.
+PS1='$HOSTNAME@$USER:${PWD:-?} '"$PS1 "
 export TERM HOME MKSH HOSTNAME SHELL USER PATH
 # Place your own aliases in <SDCARD>/.aliases for ease.
 
@@ -25,7 +19,15 @@ done
 
 unset p
 
-if [ -f "<SDCARD>/.aliases" ]; then
+rootcheck(){
+  ROOT= && [ $USER = root ] || ROOT="su -c"
+}
+
+# Workaround for termius - scoped storage only
+if [ "$(pwd)" == "/data/data/com.server.auditor.ssh.client/files/private" ]; then
+  [ -r "<SDCARD>/.aliases" ] && cp -f "<SDCARD>/.aliases" "/data/data/com.server.auditor.ssh.client/files/private/" 2>/dev/null
+  . "/data/data/com.server.auditor.ssh.client/files/private/.aliases"
+elif [ -f "<SDCARD>/.aliases" ]; then
   . "<SDCARD>/.aliases"
 fi
 
