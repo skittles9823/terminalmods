@@ -25,7 +25,7 @@ Which works the same as `.bashrc`/`.zshrc` on a Linux machine running bash or zs
 The module creates a backup of .aliases every time it's flashed. If you've made custom changes simply them back over to the updated files.
 
 ## Changes
-- ${USER:=$(getprop ro.product.device)}
+- `${USER:=$(getprop ro.product.device)}`
   - Make sure the username is the device name as opposed to u0_086ba or something similar.
 
 ## Functions
