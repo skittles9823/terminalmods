@@ -5,7 +5,7 @@ This module edits the file `system/etc/mkshrc`
 Which works the same as `.bashrc`/`.zshrc` on a Linux machine running bash or zsh respectively.
 
 ## Instructions
-- Install the module from the Magisk Manager's Downloads section, then reboot.
+- Install the module from [releases](https://github.com/skittles9823/terminalmods/releases/latest), then reboot.
 - Navigate to /sdcard to find .aliases
 
 ## Requirements
@@ -30,13 +30,13 @@ The module creates a backup of .aliases every time it's flashed. If you've made 
 
 ## Functions
 - cdn [N]
-  - cd back N number of dirs. 
+  - cd back N number of dirs.
   - e.g. `$ cdn 1` == `$ cd ../`
 - setpriority [overlay] [high|low]
-  - Change the priority of a specified overlay. 
+  - Change the priority of a specified overlay.
   - e.g. `$ setpriority android.OutlineExtensions.EtherealColorPaletteLightPastelPurple high`
 - adbfi [on|off|stats]
-  - enable/disable adb over wifi with one command. 
+  - enable/disable adb over wifi with one command.
   - e.g. `$ adbfi on`
 - overlay [list|enable|disable] [arg]
   - find package names matching [arg] (case insensitive) then will [list|enable|disable] all matching overlays
